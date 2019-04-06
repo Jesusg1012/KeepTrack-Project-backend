@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_180447) do
     t.string "title"
     t.string "description"
     t.datetime "time"
+    t.boolean "email", default: true
+    t.boolean "phone", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
