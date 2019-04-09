@@ -8,6 +8,9 @@ class CreateReminders < ActiveRecord::Migration[5.2]
       t.datetime :time
       t.boolean :email, default: true
       t.boolean :phone, default: true
+      t.string :sort_by, default: "title"
+      t.string :sort_order, default: "asc"
+      t.boolean :active, default: false
       t.timestamps
     end
   end

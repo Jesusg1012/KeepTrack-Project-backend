@@ -12,10 +12,14 @@ class Api::V1::UsersController < ApplicationController
       render json: { error: 'failed to create user' }, status: :not_acceptable
     end
   end
+  def reminder
+    reminder = Reminder.create(imageable_id: current_user.id, imageable_type: "User", time: DateTime.now,title: "title", description: "description")
+    render json: { user: UserSerializer.new(current_user) }, status: :accepted
+  end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :bio, :avatar, :name, :email, :phone)
+    params.require(:user).permit(:username, :password, :bio, :avatar, :name, :email, :number)
   end
 end

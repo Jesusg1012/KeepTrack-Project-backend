@@ -39,6 +39,9 @@ ActiveRecord::Schema.define(version: 2019_04_02_180447) do
     t.datetime "time"
     t.boolean "email", default: true
     t.boolean "phone", default: true
+    t.string "sort_by", default: "title"
+    t.string "sort_order", default: "asc"
+    t.boolean "active", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,7 +50,7 @@ ActiveRecord::Schema.define(version: 2019_04_02_180447) do
     t.string "name"
     t.string "username"
     t.string "email"
-    t.integer "number"
+    t.float "number"
     t.string "password_digest"
     t.string "bio"
     t.string "avatar", default: "https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png"
