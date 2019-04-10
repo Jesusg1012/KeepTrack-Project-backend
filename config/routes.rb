@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get '/profile', to: 'users#profile'
       patch '/reminders', to: 'reminders#update'
       patch '/notifications', to: 'reminders#notification'
+      delete '/reminders', to: "reminders#destroy"
     end
   end
 end

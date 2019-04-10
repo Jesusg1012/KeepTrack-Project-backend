@@ -1,6 +1,6 @@
 class Reminder < ApplicationRecord
    belongs_to :imageable, polymorphic: true
-   default_scope { order(title: :desc)}
+   default_scope { order(id: :asc)}
    # if :sort_order == "asc"
    #   if :sort_by == "title"
    #     default_scope { order(title: :asc)}

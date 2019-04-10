@@ -16,6 +16,10 @@ class Api::V1::RemindersController < ApplicationController
     @reminder.save
     render json: { user: UserSerializer.new(@reminder.imageable) }, status: :accepted
   end
+  def destroy
+    Reminder.delete(reminder_params[:id])
+    render json: { user: UserSerializer.new(current_user) }, status: :accepted
+  end
   private
     def reminder_params
       params.require(:reminder).permit(:id, :type, :text)
