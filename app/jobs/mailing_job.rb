@@ -14,6 +14,7 @@ class MailingJob
                 reminder.imageable.sendText(reminder)
               end
               if reminder.email
+                UserMailer.with(user: reminder.imageable).reminder_email.deliver_now
               end
             end
           end

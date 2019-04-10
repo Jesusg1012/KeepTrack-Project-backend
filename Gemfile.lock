@@ -165,6 +165,7 @@ DEPENDENCIES
   figaro
   jwt (~> 2.1)
   listen (>= 3.0.5, < 3.2)
+  mail
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rack-cors
