@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       patch '/reminders', to: 'reminders#update'
       patch '/notifications', to: 'reminders#notification'
       delete '/reminders', to: "reminders#destroy"
+      get '/project', to: 'project#view'
+      post '/list', to: 'project#list'
     end
   end
 end

@@ -10,23 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_02_180447) do
+ActiveRecord::Schema.define(version: 2019_04_14_165059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "items", force: :cascade do |t|
+  create_table "columns", force: :cascade do |t|
+    t.string "name"
     t.integer "list_id"
-    t.string "content"
-    t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "lists", force: :cascade do |t|
     t.string "title"
-    t.integer "user_id"
+    t.integer "project_id"
     t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title"
+    t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,6 +49,21 @@ ActiveRecord::Schema.define(version: 2019_04_02_180447) do
     t.string "sort_by", default: "title"
     t.string "sort_order", default: "asc"
     t.boolean "active", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "row_columns", force: :cascade do |t|
+    t.integer "row_id"
+    t.integer "column_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rows", force: :cascade do |t|
+    t.string "name"
+    t.integer "list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
