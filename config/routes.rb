@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       patch '/list/info', to: 'list#info'
       delete '/list', to: 'list#destroy'
       patch '/project', to: 'project#change'
+      post '/project', to: 'project#new'
     end
   end
 end

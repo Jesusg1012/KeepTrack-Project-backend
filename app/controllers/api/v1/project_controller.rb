@@ -13,7 +13,9 @@ class Api::V1::ProjectController < ApplicationController
   end
   def view
     id = request.headers['Project']
-    @project = current_user.projects.find_by(id: id)
+    @project = Project.find_by(id: id)
+    puts "project:"
+    puts id
     if @project
       render json: {project: ProjectSerializer.new(@project)}, status: :accepted
     else
@@ -26,6 +28,14 @@ class Api::V1::ProjectController < ApplicationController
       project.title = project_params[:title]
       project.save
       render json: {user: UserSerializer.new(current_user)}, status: :accepted
+    else
+      render json: { message: 'project not found'}, status: :not_acceptable
+    end
+  end
+  def new
+    @project = Project.create(user_id: current_user.id, title: project_params[:title])
+    if @project
+      render json: {project: ProjectSerializer.new(@project)}, status: :accepted
     else
       render json: { message: 'project not found'}, status: :not_acceptable
     end
