@@ -20,20 +20,20 @@ class Api::V1::ProjectController < ApplicationController
       render json: { message: 'project not found'}, status: :not_acceptable
     end
   end
-  def list
-    @project = current_user.projects.find_by(id: list_params[:project])
-    if(@project && list_params[:title].length > 0)
-      List.create(project_id: list_params[:project], title: list_params[:title])
-      render json: {project: ProjectSerializer.new(@project)}, status: :accepted
+  def change
+    project = current_user.projects.find_by(id: project_params[:id])
+    if project
+      project.title = project_params[:title]
+      project.save
+      render json: {user: UserSerializer.new(current_user)}, status: :accepted
     else
       render json: { message: 'project not found'}, status: :not_acceptable
     end
   end
+
   private
     def project_params
-      params.require(:project).permit(:id)
+      params.require(:project).permit(:id, :title)
     end
-    def list_params
-      params.require(:list).permit(:title, :project)
-    end
+
 end

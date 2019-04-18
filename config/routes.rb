@@ -10,7 +10,15 @@ Rails.application.routes.draw do
       patch '/notifications', to: 'reminders#notification'
       delete '/reminders', to: "reminders#destroy"
       get '/project', to: 'project#view'
-      post '/list', to: 'project#list'
+      post '/list', to: 'list#new'
+      get 'list', to: 'list#view'
+      patch '/list/row', to: 'list#row'
+      delete '/list/row', to: 'list#delete_row'
+      patch 'list/column', to: 'list#column'
+      delete '/list/column', to: 'list#delete_column'
+      patch '/list/info', to: 'list#info'
+      delete '/list', to: 'list#destroy'
+      patch '/project', to: 'project#change'
     end
   end
 end
