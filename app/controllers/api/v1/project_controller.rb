@@ -14,8 +14,6 @@ class Api::V1::ProjectController < ApplicationController
   def view
     id = request.headers['Project']
     @project = Project.find_by(id: id)
-    puts "project:"
-    puts id
     if @project
       render json: {project: ProjectSerializer.new(@project)}, status: :accepted
     else
