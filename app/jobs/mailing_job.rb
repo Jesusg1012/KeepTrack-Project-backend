@@ -10,9 +10,9 @@ class MailingJob
             if(reminder.time < DateTime.now.to_f * 1000)
               reminder.active = false
               reminder.save
-              if reminder.phone
-                reminder.imageable.sendText(reminder)
-              end
+              # if reminder.phone
+              #   reminder.imageable.sendText(reminder)
+              # end
               if reminder.email
                 UserMailer.with(user: reminder.imageable).reminder_email.deliver_now
               end

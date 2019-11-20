@@ -12,6 +12,7 @@ class Api::V1::UsersController < ApplicationController
       render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
     else
       render json: { error: 'failed to create user' }, status: :not_acceptable
+      puts @user.error
     end
   end
   def reminder

@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2019_04_14_165059) do
     t.string "description"
     t.datetime "time"
     t.boolean "email", default: true
-    t.boolean "phone", default: true
+    t.boolean "phone", default: false
     t.string "sort_by", default: "title"
     t.string "sort_order", default: "asc"
     t.boolean "active", default: false
